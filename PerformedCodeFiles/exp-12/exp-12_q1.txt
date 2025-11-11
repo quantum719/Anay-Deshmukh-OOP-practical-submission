@@ -1,0 +1,32 @@
+#include <iostream>
+#include <stack> // Include the STL stack library
+
+using namespace std;
+
+int main() {
+    stack<int> s; // Create a stack of integers
+
+    cout << "--- STL Stack ---" << endl;
+
+    // Push elements
+    cout << "Pushing 10" << endl;
+    s.push(10);
+    cout << "Pushing 20" << endl;
+    s.push(20);
+    cout << "Pushing 30" << endl;
+    s.push(30);
+
+    // Check the top element
+    cout << "Top element is: " << s.top() << endl;
+
+    // Pop an element
+    cout << "Popping " << s.top() << endl;
+    s.pop();
+
+    cout << "Top element is now: " << s.top() << endl;
+
+    // Check size
+    cout << "Stack size: " << s.size() << endl;
+
+    return 0;
+}

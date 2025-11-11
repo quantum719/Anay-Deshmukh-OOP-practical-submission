@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Base class 1 (A)
+class Father {
+public:
+    string father_name;
+    void show_father() {
+        cout << "Father: " << father_name << endl;
+    }
+};
+
+// Base class 2 (B)
+class Mother {
+public:
+    string mother_name;
+    void show_mother() {
+        cout << "Mother: " << mother_name << endl;
+    }
+};
+
+// Derived class (C)
+class Child : public Father, public Mother {
+public:
+    string child_name;
+    void show_child() {
+        cout << "Child: " << child_name << endl;
+    }
+};
+
+int main() {
+    Child c1;
+    c1.father_name = "John";  // From Father
+    c1.mother_name = "Mary";  // From Mother
+    c1.child_name = "Alex";   // From Child
+
+    cout << "--- Multiple Inheritance ---" << endl;
+    c1.show_child();
+    c1.show_father();
+    c1.show_mother();
+
+    return 0;
+}

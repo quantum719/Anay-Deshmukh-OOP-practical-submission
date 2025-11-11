@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+class Number {
+private:
+    int value;
+public:
+    Number(int v = 0) : value(v) {}
+
+    // Overload the unary minus (-) operator
+    Number operator-() {
+        // Return a new Number object with the negated value
+        return Number(-value);
+    }
+
+    void display() {
+        cout << "Value: " << value << endl;
+    }
+};
+
+int main() {
+    Number n1(10);
+    Number n2;
+
+    cout << "Original n1: ";
+    n1.display();
+
+    n2 = -n1; // Calls n1.operator-()
+
+    cout << "n2 (after n2 = -n1): ";
+    n2.display();
+
+    return 0;
+}

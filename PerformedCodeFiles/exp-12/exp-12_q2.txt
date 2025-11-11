@@ -1,0 +1,35 @@
+#include <iostream>
+#include <queue> // Include the STL queue library
+
+using namespace std;
+
+int main() {
+    queue<int> q; // Create a queue of integers
+
+    cout << "--- STL Queue ---" << endl;
+
+    // Push elements (enqueue)
+    cout << "Pushing 10" << endl;
+    q.push(10);
+    cout << "Pushing 20" << endl;
+    q.push(20);
+    cout << "Pushing 30" << endl;
+    q.push(30);
+
+    // Check the front element
+    cout << "Front element is: " << q.front() << endl;
+    // Check the back element
+    cout << "Back element is: " << q.back() << endl;
+
+
+    // Pop an element (dequeue)
+    cout << "Popping " << q.front() << endl;
+    q.pop();
+
+    cout << "Front element is now: " << q.front() << endl;
+
+    // Check size
+    cout << "Queue size: " << q.size() << endl;
+
+    return 0;
+}

@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+// Class Template
+template <typename T>
+class Calculator {
+public:
+    T add(T a, T b) {
+        return a + b;
+    }
+    T subtract(T a, T b) {
+        return a - b;
+    }
+    T multiply(T a, T b) {
+        return a * b;
+    }
+    T divide(T a, T b) {
+        if (b == 0) {
+            cout << "Error: Division by zero!" << endl;
+            return 0;
+        }
+        return a / b;
+    }
+};
+
+int main() {
+    // Create an integer calculator
+    Calculator<int> int_calc;
+    cout << "--- Integer Calculator ---" << endl;
+    cout << "10 + 5 = " << int_calc.add(10, 5) << endl;
+    cout << "10 - 5 = " << int_calc.subtract(10, 5) << endl;
+
+    // Create a double calculator
+    Calculator<double> double_calc;
+    cout << "\n--- Double Calculator ---" << endl;
+    cout << "10.5 * 2.0 = " << double_calc.multiply(10.5, 2.0) << endl;
+    cout << "10.5 / 2.0 = " << double_calc.divide(10.5, 2.0) << endl;
+
+    return 0;
+}

@@ -1,0 +1,35 @@
+#include <iostream>
+
+using namespace std;
+
+// Grandparent class
+class A {
+public:
+    void show() {
+        cout << "I am from class A" << endl;
+    }
+};
+
+// Parent class 1 inherits 'virtual'ly
+class B : virtual public A {
+};
+
+// Parent class 2 inherits 'virtual'ly
+class C : virtual public A {
+};
+
+// Child class
+// Now, 'D' gets only ONE copy of 'A'
+class D : public B, public C {
+};
+
+int main() {
+    D objD;
+    
+    cout << "--- Virtual Base Class (Fixing Ambiguity) ---" << endl;
+    
+    // This now works perfectly! No ambiguity.
+    objD.show(); 
+    
+    return 0;
+}

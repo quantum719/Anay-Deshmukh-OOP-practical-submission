@@ -1,0 +1,65 @@
+#include <iostream>
+
+using namespace std;
+
+const int MAX_SIZE = 10;
+
+// Class Template for Stack
+template <typename T>
+class Stack {
+private:
+    T arr[MAX_SIZE];
+    int top;
+
+public:
+    Stack() {
+        top = -1; // Stack is initially empty
+    }
+
+    void push(T val) {
+        if (top >= MAX_SIZE - 1) {
+            cout << "Stack Overflow!" << endl;
+            return;
+        }
+        top++;
+        arr[top] = val;
+        cout << "Pushed " << val << endl;
+    }
+
+    void pop() {
+        if (top < 0) {
+            cout << "Stack Underflow!" << endl;
+            return;
+        }
+        T val = arr[top];
+        top--;
+        cout << "Popped " << val << endl;
+    }
+
+    void display() {
+        if (top < 0) {
+            cout << "Stack is empty." << endl;
+            return;
+        }
+        cout << "Stack (top to bottom): ";
+        for (int i = top; i >= 0; i--) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+    }
+};
+
+int main() {
+    // Create a stack of Integers
+    Stack<int> int_stack;
+    cout << "--- Integer Stack ---" << endl;
+    int_stack.push(10);
+    int_stack.push(20);
+    int_stack.display();
+    int_stack.pop();
+    int_stack.display();
+    int_stack.pop();
+    int_stack.pop(); // Test underflow
+
+    return 0;
+}

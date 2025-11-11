@@ -1,0 +1,30 @@
+#include <iostream>
+
+using namespace std;
+
+// Function Template
+template <typename T>
+T array_sum(T arr[], int size) {
+    T sum = 0;
+    for (int i = 0; i < size; ++i) {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+int main() {
+    int int_arr[10] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    float float_arr[10] = {1.1, 2.2, 3.3, 4.4, 5.5, 6.6, 7.7, 8.8, 9.9, 10.0};
+    double double_arr[10] = {10.1, 20.2, 30.3, 40.4, 50.5, 60.6, 70.7, 80.8, 90.9, 100.0};
+
+    // Call template function for Integers
+    cout << "Integer array sum: " << array_sum(int_arr, 10) << endl;
+
+    // Call template function for Floats
+    cout << "Float array sum: " << array_sum(float_arr, 10) << endl;
+
+    // Call template function for Doubles
+    cout << "Double array sum: " << array_sum(double_arr, 10) << endl;
+
+    return 0;
+}

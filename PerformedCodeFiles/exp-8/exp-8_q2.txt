@@ -1,0 +1,63 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Base class (Interface)
+class ILogin {
+protected:
+    string name;
+    string password;
+
+public:
+    // Virtual function
+    virtual void accept() {
+        cout << "Enter Name: ";
+        cin >> name;
+        cout << "Enter Password: ";
+        cin >> password;
+    }
+    
+    virtual void display() {
+        cout << "Name: " << name << endl;
+    }
+    
+    // Virtual destructor (good practice)
+    virtual ~ILogin() {} 
+};
+
+// Derived class 1
+class EmailLogin : public ILogin {
+public:
+    void accept() override {
+        cout << "--- Email Login ---" << endl;
+        ILogin::accept(); // Call base class function
+        cout << "Email login details accepted for " << name << endl;
+    }
+};
+
+// Derived class 2
+class MembershipLogin : public ILogin {
+public:
+    void accept() override {
+        cout << "--- Membership Login ---" << endl;
+        ILogin::accept(); // Call base class function
+        cout << "Membership login details accepted for " << name << endl;
+    }
+};
+
+int main() {
+    ILogin *ptr; // Base class pointer
+
+    // Demonstrate with EmailLogin
+    ptr = new EmailLogin();
+    ptr->accept(); // Calls EmailLogin::accept() at runtime
+    cout << endl;
+
+    // Demonstrate with MembershipLogin
+    ptr = new MembershipLogin();
+    ptr->accept(); // Calls MembershipLogin::accept() at runtime
+    
+    delete ptr;
+    return 0;
+}

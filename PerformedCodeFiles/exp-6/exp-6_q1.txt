@@ -1,0 +1,45 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// Base class (A)
+class Person {
+public:
+    string name;
+    void introduce() {
+        cout << "Name: " << name << endl;
+    }
+};
+
+// Intermediate class (B)
+class Employee : public Person {
+public:
+    int employee_id;
+    void show_id() {
+        cout << "Employee ID: " << employee_id << endl;
+    }
+};
+
+// Derived class (C)
+class Manager : public Employee {
+public:
+    string department;
+    void manage() {
+        cout << "Managing Department: " << department << endl;
+    }
+};
+
+int main() {
+    Manager m1;
+    m1.name = "Mr. Smith";       // From Person
+    m1.employee_id = 101;      // From Employee
+    m1.department = "IT";        // From Manager
+
+    cout << "--- Multilevel Inheritance ---" << endl;
+    m1.introduce();
+    m1.show_id();
+    m1.manage();
+
+    return 0;
+}

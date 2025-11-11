@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector> // Include the vector library
+
+using namespace std;
+
+// Helper function for operation (c)
+void display_vector(const vector<int>& v) {
+    cout << "Vector: (";
+    for (size_t i = 0; i < v.size(); ++i) {
+        cout << v[i];
+        if (i < v.size() - 1) {
+            cout << ",";
+        }
+    }
+    cout << ")" << endl;
+}
+
+int main() {
+    
+    vector<int> my_vector = {10, 20, 30, 40, 50};
+    cout << "--- Initial Vector ---" << endl;
+    display_vector(my_vector); // c) Display the vector
+
+    
+    cout << "\n--- Modifying Element ---" << endl;
+    cout << "Changing element at index 1 (value 20) to 25." << endl;
+    my_vector[1] = 25;
+    display_vector(my_vector);
+
+    
+    int scalar = 3;
+    cout << "\n--- Multiplying by Scalar (" << scalar << ") ---" << endl;
+    for (int& val : my_vector) { // Use reference (&) to modify
+        val = val * scalar;
+    }
+    display_vector(my_vector);
+
+    return 0;
+}

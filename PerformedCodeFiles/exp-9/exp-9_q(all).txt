@@ -1,0 +1,61 @@
+#include <fstream>
+#include <iostream>
+#include <cctype>
+using namespace std;
+
+int main() {
+    fstream first_file,second_file;
+    char ch;
+    
+    first_file.open("copied_file.txt",ios::in);
+    if(!first_file)
+    {
+        cout<<"failed";
+        return 1;
+    }
+    second_file.open("copier_file.txt",ios::out);
+    if(!second_file)
+    {
+        cout<<"failed";
+        return 1;
+    }
+    //copy into second_file
+/*    while(!first_file.eof())
+    {
+        first_file.get(ch);
+        if(first_file)
+        second_file.put(ch);
+    }
+*/    
+    //count no. of words
+/*    string words;
+    int count;
+    while(!first_file.eof())
+    {
+        first_file>>words;
+        count++;
+    }
+    cout<<"no. of words: "<<count;
+*/
+    //count no. of repeated words;
+/*    string words,target;
+    int count;
+    cout<<"enter target word: ";
+    cin>>target;
+    while(!first_file.eof())
+    {
+        first_file>>words;
+        if(words == target)count++;
+    }
+    cout<<"no. of times word repeated: "<<count;
+*/
+    char words;
+    int scount=0,dcount=0;
+    while(first_file.get(words))
+    {
+        if(isspace(words))scount++;
+        if(isdigit(words))dcount++;
+    }
+    cout<<"no. of spaces: "<<scount<<endl;
+    cout<<"no. of digits: "<<dcount;
+}

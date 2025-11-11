@@ -1,0 +1,30 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+// 1. Generic template (for numbers)
+template <typename T>
+T square(T val) {
+    cout << "(Using generic template) " << endl;
+    return val * val;
+}
+
+// 2. Specialized template for 'string'
+template <>
+string square(string val) {
+    cout << "(Using string specialization) " << endl;
+    return val + val; // Concatenation
+}
+
+int main() {
+    // This call matches the generic template
+    int int_sq = square(7);
+    cout << "Square of 7: " << int_sq << endl;
+    
+    // This call matches the string specialization
+    string str_sq = square(string("Hello"));
+    cout << "Square of 'Hello': " << str_sq << endl;
+
+    return 0;
+}

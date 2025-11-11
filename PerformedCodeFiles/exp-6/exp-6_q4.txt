@@ -1,0 +1,43 @@
+#include <iostream>
+
+using namespace std;
+
+// Grandparent class
+class A {
+public:
+    void show() {
+        cout << "I am from class A" << endl;
+    }
+};
+
+// Parent class 1
+class B : public A {
+};
+
+// Parent class 2
+class C : public A {
+};
+
+// Child class
+class D : public B, public C {
+};
+
+int main() {
+    D objD;
+    
+    // objD.show(); // This line will cause a COMPILE ERROR!
+    // Error: request for member 'show' is ambiguous
+    // because 'D' inherits 'show()' from 'A' via two paths (B and C).
+    
+    cout << "--- Hybrid Inheritance (Ambiguity) ---" << endl;
+    cout << "The line 'objD.show()' is commented out because it causes ambiguity." << endl;
+
+    // To fix this, you must specify which path:
+    cout << "Resolving ambiguity manually:" << endl;
+    objD.B::show(); // Use the 'show' from B
+    objD.C::show(); // Use the 'show' from C
+
+    cout << "\nSee problem 6.e for the proper fix using virtual base classes." << endl;
+    
+    return 0;
+}

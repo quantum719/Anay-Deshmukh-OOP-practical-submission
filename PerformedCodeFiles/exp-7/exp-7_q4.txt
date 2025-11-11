@@ -1,0 +1,56 @@
+#include <iostream>
+
+using namespace std;
+
+class Counter {
+private:
+    int count;
+public:
+    Counter(int c = 0) : count(c) {}
+
+    // Overload pre-increment (++object)
+    Counter operator++() {
+        count++; // Increment
+        return *this; // Return the modified object
+    }
+
+    // Overload post-increment (object++)
+    // The (int) is a dummy parameter to distinguish from pre-increment
+    Counter operator++(int) {
+        Counter temp = *this; // Save the original state
+        count++; // Increment
+        return temp; // Return the original state
+    }
+
+    void display() {
+        cout << "Count: " << count << endl;
+    }
+};
+
+int main() {
+    Counter c1(5);
+    Counter c2;
+
+    cout << "--- Pre-increment ---" << endl;
+    cout << "c1 initial: ";
+    c1.display();
+    c2 = ++c1; // Pre-increment
+    cout << "c2 = ++c1" << endl;
+    cout << "c1 after: ";
+    c1.display();
+    cout << "c2 after: ";
+    c2.display();
+
+    cout << "\n--- Post-increment ---" << endl;
+    c1 = Counter(10); // Reset c1
+    cout << "c1 initial: ";
+    c1.display();
+    c2 = c1++; // Post-increment
+    cout << "c2 = c1++" << endl;
+    cout << "c1 after: ";
+    c1.display();
+    cout << "c2 after: ";
+    c2.display();
+
+    return 0;
+}

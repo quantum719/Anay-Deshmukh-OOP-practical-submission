@@ -1,0 +1,27 @@
+#include <iostream>
+
+using namespace std;
+
+// Function to calculate area of a rectangle
+double calculate_area(double length, double width) {
+    cout << "(Calculating area of rectangle) ";
+    return length * width;
+}
+
+// Overloaded function to calculate area of a square
+double calculate_area(double side) {
+    cout << "(Calculating area of square) ";
+    return side * side;
+}
+
+int main() {
+    // Call the function for a rectangle (laboratory)
+    double lab_area = calculate_area(10.5, 20.0);
+    cout << "Area of laboratory: " << lab_area << endl;
+
+    // Call the overloaded function for a square (classroom)
+    double class_area = calculate_area(15.0);
+    cout << "Area of classroom: " << class_area << endl;
+
+    return 0;
+}

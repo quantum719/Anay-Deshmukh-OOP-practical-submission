@@ -1,0 +1,42 @@
+#include <iostream>
+#include <string>
+#include <cstring> // For strcpy and strcat
+
+using namespace std;
+
+class MyString {
+private:
+    char str[200]; // Fixed size buffer
+
+public:
+    // Constructor
+    MyString(const char* s = "") {
+        strcpy(str, s);
+    }
+
+    // Overload the binary + operator
+    MyString operator+(MyString& other) {
+        MyString temp; // Create a temporary string
+        strcpy(temp.str, this->str); // Copy first string into temp
+        strcat(temp.str, other.str); // Concatenate second string
+        return temp; // Return the new string
+    }
+
+    void display() {
+        cout << str;
+    }
+};
+
+int main() {
+    MyString s1("xyz");
+    MyString s2("pqr");
+    MyString s3;
+
+    s3 = s1 + s2; // Calls s1.operator+(s2)
+
+    cout << "s1: "; s1.display(); cout << endl;
+    cout << "s2: "; s2.display(); cout << endl;
+    cout << "s3 (s1 + s2): "; s3.display(); cout << endl;
+
+    return 0;
+}
